@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #08070a;
+  --color-black: #0d0c0f;
+  --color-charcoal: #18161a;
+  --color-garnet: #6e0f24;
+  --color-garnet-bright: #8f1a34;
+  --color-off-white: #f3ece3;
+  --color-silver: #b8b3ad;
+  --color-silver-dim: #6f6a66;
+
+  --font-display: var(--font-bebas), sans-serif;
+  --font-body: var(--font-hanken), sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-black: var(--color-black);
+  --color-charcoal: var(--color-charcoal);
+  --color-garnet: var(--color-garnet);
+  --color-garnet-bright: var(--color-garnet-bright);
+  --color-off-white: var(--color-off-white);
+  --color-silver: var(--color-silver);
+  --color-silver-dim: var(--color-silver-dim);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-off-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-garnet);
+  color: var(--color-off-white);
+}
+
+a {
+  color: inherit;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Editorial oversized display type: tight tracking, near-1 leading */
+.type-display {
+  font-family: var(--font-display);
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fixed, non-interactive film grain layer over the whole viewport */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-off-white);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
