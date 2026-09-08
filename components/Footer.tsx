@@ -102,9 +102,20 @@ export function Footer() {
       </div>
 
       <div className="border-t border-off-white/10 px-6 py-6 sm:px-10">
-        <p className="font-body text-xs text-silver-dim">
-          © {new Date().getFullYear()} {siteConfig.name}. Columbia, SC.
-        </p>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-body text-xs text-silver-dim">
+            © {new Date().getFullYear()} {siteConfig.name}. Columbia, SC.
+            Must be 21+ to consume alcohol. Please drink responsibly.
+          </p>
+          <div className="flex gap-5 font-body text-xs text-silver-dim">
+            <Link href="/privacy" className="hover:text-off-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-off-white">
+              Terms of Use
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
