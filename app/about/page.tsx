@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AnimatedText } from "@/components/AnimatedText";
@@ -43,6 +44,12 @@ export default function AboutPage() {
               fourth quarter. Win or lose, this is where Gamecock fans watch
               the game.
             </p>
+            <Link
+              href="/gamedays"
+              className="mt-4 inline-block font-body text-off-white hover:text-garnet-bright"
+            >
+              See gameday hours →
+            </Link>
           </div>
         </div>
       </section>

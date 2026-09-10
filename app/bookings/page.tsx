@@ -14,17 +14,17 @@ const bookingOptions = [
   {
     label: "PRIVATE EVENTS",
     copy: "Birthdays, celebrations, and nights that call for your own room.",
-    image: "/photos/gallery/DSC08125.jpg",
+    image: "/photos/hero/DSC09183.jpg",
   },
   {
     label: "ORGANIZATION EVENTS",
     copy: "Greek life, student orgs, and company nights out. We'll build it around your group.",
-    image: "/photos/hero/DSC08564.jpg",
+    image: "/photos/hero/DSC08502.jpg",
   },
   {
     label: "DJ / PROMOTER EVENTS",
     copy: "Bring your own lineup and we'll bring the room. Let's talk sound and staging.",
-    image: "/photos/hero/DSC08705.jpg",
+    image: "/photos/hero/DSC09259.jpg",
   },
   {
     label: "SPECIAL EVENTS",
