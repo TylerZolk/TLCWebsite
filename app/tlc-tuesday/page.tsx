@@ -17,7 +17,10 @@ export default function TLCTuesdayPage() {
   return (
     <>
       <Hero
-        images={["/photos/hero/DSC08705.jpg"]}
+        video={{
+          src: "/videos/tlc-tuesday-hero.mp4",
+          poster: "/videos/tlc-tuesday-hero-poster.jpg",
+        }}
         kicker="Every Tuesday"
         lines={["TLC", "TUESDAY"]}
         ctas={[{ label: "See This Week", href: "#lineup", variant: "solid" }]}

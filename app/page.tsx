@@ -8,17 +8,14 @@ import { MagneticButton } from "@/components/MagneticButton";
 import { recentNights } from "@/lib/data/gallery";
 import { siteConfig } from "@/lib/data/site";
 
-const heroImages = [
-  "/photos/hero/DSC08502.jpg",
-  "/photos/hero/DSC08530.jpg",
-  "/photos/hero/DSC08618.jpg",
-];
-
 export default function HomePage() {
   return (
     <>
       <Hero
-        images={heroImages}
+        video={{
+          src: "/videos/home-hero.mp4",
+          poster: "/videos/home-hero-poster.jpg",
+        }}
         lines={["TLC"]}
         sub="COLUMBIA NIGHTS START HERE."
         ctas={[

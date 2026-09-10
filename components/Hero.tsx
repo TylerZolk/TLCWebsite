@@ -17,8 +17,14 @@ interface HeroCta {
   variant?: "solid" | "outline";
 }
 
+interface HeroVideo {
+  src: string;
+  poster: string;
+}
+
 interface HeroProps {
-  images: string[];
+  images?: string[];
+  video?: HeroVideo;
   kicker?: string;
   lines: string[];
   sub?: string;
@@ -28,7 +34,8 @@ interface HeroProps {
 }
 
 export function Hero({
-  images,
+  images = [],
+  video,
   kicker,
   lines,
   sub,
@@ -52,12 +59,12 @@ export function Hero({
   const scale = prefersReduced ? flatScale : rawScale;
 
   useEffect(() => {
-    if (images.length < 2 || prefersReduced) return;
+    if (video || images.length < 2 || prefersReduced) return;
     const id = setInterval(() => {
       setActive((v) => (v + 1) % images.length);
     }, 5500);
     return () => clearInterval(id);
-  }, [images.length, prefersReduced]);
+  }, [video, images.length, prefersReduced]);
 
   return (
     <section
@@ -65,22 +72,46 @@ export function Hero({
       className="relative flex min-h-screen w-full flex-col justify-end overflow-hidden bg-black"
     >
       <motion.div style={{ scale }} className="absolute inset-0">
-        {images.map((src, i) => (
-          <div
-            key={src}
-            className="absolute inset-0 transition-opacity duration-1000 ease-out"
-            style={{ opacity: i === active ? 1 : 0 }}
-          >
+        {video ? (
+          prefersReduced ? (
             <Image
-              src={src}
+              src={video.poster}
               alt=""
               fill
-              priority={i === 0}
+              priority
               sizes="100vw"
               className="object-cover"
             />
-          </div>
-        ))}
+          ) : (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={video.poster}
+              className="absolute inset-0 h-full w-full object-cover"
+            >
+              <source src={video.src} type="video/mp4" />
+            </video>
+          )
+        ) : (
+          images.map((src, i) => (
+            <div
+              key={src}
+              className="absolute inset-0 transition-opacity duration-1000 ease-out"
+              style={{ opacity: i === active ? 1 : 0 }}
+            >
+              <Image
+                src={src}
+                alt=""
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          ))
+        )}
       </motion.div>
 
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
