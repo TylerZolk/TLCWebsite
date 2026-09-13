@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { GrainOverlay } from "@/components/GrainOverlay";
-import { CustomCursor } from "@/components/CustomCursor";
 import { siteConfig } from "@/lib/data/site";
 
 const bebas = Bebas_Neue({
@@ -38,17 +34,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${bebas.variable} ${hanken.variable} h-full`}
-    >
-      <body className="min-h-full flex flex-col bg-ink text-off-white">
-        <GrainOverlay />
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+    <html lang="en" className={`${bebas.variable} ${hanken.variable} h-full`}>
+      <body className="min-h-full bg-ink text-off-white">{children}</body>
     </html>
   );
 }

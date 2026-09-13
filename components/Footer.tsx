@@ -108,6 +108,9 @@ export function Footer() {
             Must be 21+ to consume alcohol. Please drink responsibly.
           </p>
           <div className="flex gap-5 font-body text-xs text-silver-dim">
+            <Link href="/careers" className="hover:text-off-white">
+              Careers
+            </Link>
             <Link href="/privacy" className="hover:text-off-white">
               Privacy Policy
             </Link>
