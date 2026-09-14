@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = {
@@ -29,11 +30,18 @@ export default function PrivacyPolicyPage() {
         Information we collect
       </h2>
       <p className="mt-3 font-body leading-relaxed text-silver">
-        This site does not have a contact form, newsletter signup, or
-        account system, so we don&apos;t collect personal information
-        through it directly. The only information we receive is:
+        This site doesn&apos;t have a newsletter signup or account system.
+        The information we do collect is:
       </p>
       <ul className="mt-3 list-disc space-y-2 pl-5 font-body text-silver">
+        <li>
+          Job application details, if you apply through our{" "}
+          <Link href="/careers" className="text-off-white hover:text-garnet-bright">
+            Careers
+          </Link>{" "}
+          page: your name, email, phone number, the position you applied
+          for, and anything you write in the message field.
+        </li>
         <li>
           Information you choose to share if you contact us directly by
           phone or email (for example, your name, email address, or phone
@@ -46,6 +54,12 @@ export default function PrivacyPolicyPage() {
           used to identify you personally.
         </li>
       </ul>
+      <p className="mt-3 font-body leading-relaxed text-silver">
+        Job application data is used only to evaluate you for the position
+        you applied to and to contact you about it. It&apos;s visible to
+        {" "}{siteConfig.name} staff who manage hiring and is not shared
+        with any other third party.
+      </p>
 
       <h2 className="type-display mt-10 text-2xl sm:text-3xl">
         Cookies and tracking
@@ -61,7 +75,7 @@ export default function PrivacyPolicyPage() {
       </h2>
       <p className="mt-3 font-body leading-relaxed text-silver">
         Any information you share by contacting us is used only to respond
-        to your inquiry, such as a booking request or general question. We
+        to your inquiry, such as a booking or general question. We
         don&apos;t sell, rent, or share your information with third parties
         for marketing purposes.
       </p>

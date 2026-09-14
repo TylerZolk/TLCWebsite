@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { getOpenPositions } from "@/lib/db";
+import { siteConfig } from "@/lib/data/site";
+import { toListItems } from "@/lib/utils";
 import { submitApplication } from "./actions";
 
 export const metadata: Metadata = {
@@ -46,38 +48,67 @@ export default async function CareersPage({
             </p>
           ) : (
             <div className="divide-y divide-off-white/10 border-t border-off-white/10">
-              {positions.map((position) => (
-                <div
-                  key={position.id}
-                  className="flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div>
-                    <p className="type-display text-3xl sm:text-4xl">
-                      {position.title}
-                    </p>
-                    <p className="mt-2 font-body text-sm text-silver">
-                      {[
-                        position.department,
-                        position.location,
-                        position.employment_type,
-                      ]
-                        .filter(Boolean)
-                        .join(" · ")}
-                    </p>
-                    {position.description && (
-                      <p className="mt-3 max-w-xl font-body text-off-white">
-                        {position.description}
-                      </p>
-                    )}
-                  </div>
-                  <a
-                    href={`/careers?position=${position.id}#apply`}
-                    className="shrink-0 rounded-full border border-off-white/30 px-8 py-4 font-body text-sm font-semibold tracking-[0.15em] uppercase hover:border-off-white"
+              {positions.map((position) => {
+                const responsibilities = toListItems(position.responsibilities);
+                const requirements = toListItems(position.requirements);
+
+                return (
+                  <div
+                    key={position.id}
+                    className="flex flex-col gap-6 py-10 sm:flex-row sm:items-start sm:justify-between"
                   >
-                    Apply
-                  </a>
-                </div>
-              ))}
+                    <div className="max-w-xl">
+                      <p className="type-display text-3xl sm:text-4xl">
+                        {position.title}
+                      </p>
+                      <p className="mt-2 font-body text-sm text-silver">
+                        {[
+                          position.department,
+                          position.location,
+                          position.employment_type,
+                        ]
+                          .filter(Boolean)
+                          .join(" · ")}
+                      </p>
+                      {position.description && (
+                        <p className="mt-4 font-body text-off-white">
+                          {position.description}
+                        </p>
+                      )}
+                      {responsibilities.length > 0 && (
+                        <div className="mt-5">
+                          <p className="font-body text-xs font-semibold tracking-[0.2em] text-silver uppercase">
+                            Responsibilities
+                          </p>
+                          <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-off-white">
+                            {responsibilities.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {requirements.length > 0 && (
+                        <div className="mt-5">
+                          <p className="font-body text-xs font-semibold tracking-[0.2em] text-silver uppercase">
+                            Requirements
+                          </p>
+                          <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-off-white">
+                            {requirements.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                    <a
+                      href={`/careers?position=${position.id}#apply`}
+                      className="shrink-0 rounded-full border border-off-white/30 px-8 py-4 font-body text-sm font-semibold tracking-[0.15em] uppercase hover:border-off-white"
+                    >
+                      Apply
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
@@ -177,6 +208,26 @@ export default async function CareersPage({
               </button>
             </form>
           )}
+        </div>
+      </section>
+
+      <section className="pb-28 sm:pb-36">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10">
+          <div className="max-w-2xl border-t border-off-white/10 pt-10 font-body text-sm text-silver-dim">
+            <p>
+              {siteConfig.name} is an equal opportunity employer. All
+              applicants are considered without regard to race, color,
+              religion, sex, sexual orientation, gender identity, national
+              origin, age, disability, or any other status protected by
+              applicable law.
+            </p>
+            <p className="mt-4">
+              Applicants must be legally authorized to work in the United
+              States. Some positions involve serving alcohol and require
+              meeting the minimum age set by South Carolina law for that
+              role.
+            </p>
+          </div>
         </div>
       </section>
     </>

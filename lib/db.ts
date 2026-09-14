@@ -30,6 +30,8 @@ export interface Position {
   location: string | null;
   employment_type: string | null;
   description: string | null;
+  responsibilities: string | null;
+  requirements: string | null;
   status: PositionStatus;
   created_at: string;
 }
@@ -64,10 +66,12 @@ export async function createPosition(input: {
   location: string | null;
   employmentType: string | null;
   description: string | null;
+  responsibilities: string | null;
+  requirements: string | null;
 }): Promise<void> {
   await getSql()`
-    INSERT INTO positions (title, department, location, employment_type, description)
-    VALUES (${input.title}, ${input.department}, ${input.location}, ${input.employmentType}, ${input.description})
+    INSERT INTO positions (title, department, location, employment_type, description, responsibilities, requirements)
+    VALUES (${input.title}, ${input.department}, ${input.location}, ${input.employmentType}, ${input.description}, ${input.responsibilities}, ${input.requirements})
   `;
 }
 

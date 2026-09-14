@@ -14,6 +14,10 @@ export async function addPosition(formData: FormData) {
   const employmentType =
     formData.get("employmentType")?.toString().trim() || null;
   const description = formData.get("description")?.toString().trim() || null;
+  const responsibilities =
+    formData.get("responsibilities")?.toString().trim() || null;
+  const requirements =
+    formData.get("requirements")?.toString().trim() || null;
 
   if (!title) return;
 
@@ -23,6 +27,8 @@ export async function addPosition(formData: FormData) {
     location,
     employmentType,
     description,
+    responsibilities,
+    requirements,
   });
   revalidatePath("/admin/positions");
   revalidatePath("/careers");

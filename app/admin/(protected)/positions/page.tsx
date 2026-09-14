@@ -67,6 +67,31 @@ export default async function AdminPositionsPage() {
               id="description"
               name="description"
               rows={3}
+              placeholder="A short overview of the role."
+              className={`${fieldClasses} resize-none`}
+            />
+          </div>
+          <div>
+            <label className={labelClasses} htmlFor="responsibilities">
+              Responsibilities
+            </label>
+            <textarea
+              id="responsibilities"
+              name="responsibilities"
+              rows={4}
+              placeholder={"One per line, e.g.\nGreet and serve guests\nRun food and drinks\nKeep the bar stocked"}
+              className={`${fieldClasses} resize-none`}
+            />
+          </div>
+          <div>
+            <label className={labelClasses} htmlFor="requirements">
+              Requirements
+            </label>
+            <textarea
+              id="requirements"
+              name="requirements"
+              rows={4}
+              placeholder={"One per line, e.g.\nMust be 18+\nNights and weekends availability\nPrior bar/restaurant experience a plus"}
               className={`${fieldClasses} resize-none`}
             />
           </div>
